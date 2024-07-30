@@ -157,6 +157,33 @@ class User {
         })
 
     }
+
+    static DeleteAddress(req,res) {
+        let token = req.headers.authorization;
+        let payload = jwt.verify(token,'amit');
+        let userId = payload.id;
+
+        let query = `DELETE FROM user_address WHERE userId = ${userId}`;
+        db.query(query,(err,result) => {
+            if(err) {
+                console.log(err);
+                res.status(500).json({
+                    msg : "Failed to delete address!!",
+                })
+            }else{
+                if(result.affectedRows === 0) {
+                    res.status(400).json({
+                        msg : "No address found!!",
+                    })
+                }else{
+                    res.status(200).json({
+                        msg : "Address deleted successfully!!",
+                    })
+                }
+            }
+
+        })
+    }
 }
 
 module.exports = User;

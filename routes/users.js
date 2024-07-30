@@ -43,6 +43,7 @@ router.post("/setaddress",User.SetAddress);
 
 router.get("/getaddress",User.GetAddress);
 router.patch("/updateaddress",User.UpdateAddress);
+router.delete("/deleteaddress",User.DeleteAddress);
 
 
 module.exports = router;

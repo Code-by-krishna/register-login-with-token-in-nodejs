@@ -47,7 +47,7 @@ class User {
                             })
                         }else {
                             if(result == true) {
-                                var token = jwt.sign(user, 'amit');
+                                var token = jwt.sign(user, 'amit',{expiresIn: '1s'});
                                 res.status(200).json({
                                     msg: "Login successfully!!",
                                     token: token,
